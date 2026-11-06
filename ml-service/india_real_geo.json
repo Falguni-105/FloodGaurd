@@ -1,0 +1,497 @@
+{
+  "localities": [
+    {
+      "name": "Mumbai (Mithi Basin - Kurla/Kalina)",
+      "state": "Maharashtra",
+      "lat": 19.0657,
+      "lon": 72.8797,
+      "elevation_m": 8.0,
+      "slope_deg": 1.2,
+      "drainage_capacity_mmh": 25.0,
+      "historical_floods": 15,
+      "impervious_ratio": 0.92,
+      "river_distance_km": 0.15,
+      "flood_history": "2005 (historic 944mm cloudburst), 2017, 2019, 2021 Mithi river overflow"
+    },
+    {
+      "name": "Chennai (Adyar Basin - Saidapet/Velachery)",
+      "state": "Tamil Nadu",
+      "lat": 13.021,
+      "lon": 80.223,
+      "elevation_m": 7.0,
+      "slope_deg": 1.0,
+      "drainage_capacity_mmh": 22.0,
+      "historical_floods": 13,
+      "impervious_ratio": 0.88,
+      "river_distance_km": 0.2,
+      "flood_history": "2015 catastrophic deluge (494mm in 24h), 2023 Cyclone Michaung"
+    },
+    {
+      "name": "Srinagar (Jhelum Basin - Rajbagh)",
+      "state": "Jammu & Kashmir",
+      "lat": 34.068,
+      "lon": 74.821,
+      "elevation_m": 1585.0,
+      "slope_deg": 2.5,
+      "drainage_capacity_mmh": 18.0,
+      "historical_floods": 9,
+      "impervious_ratio": 0.74,
+      "river_distance_km": 0.18,
+      "flood_history": "Sept 2014 catastrophic Jhelum breach, entire city submerged under 15-20ft water"
+    },
+    {
+      "name": "Kedarnath (Mandakini River Valley)",
+      "state": "Uttarakhand",
+      "lat": 30.7346,
+      "lon": 79.0669,
+      "elevation_m": 3583.0,
+      "slope_deg": 14.5,
+      "drainage_capacity_mmh": 35.0,
+      "historical_floods": 8,
+      "impervious_ratio": 0.35,
+      "river_distance_km": 0.1,
+      "flood_history": "June 2013 glacial lake outburst flash flood, 2021 Chamoli flash floods"
+    },
+    {
+      "name": "Kochi & Aluva (Periyar Basin)",
+      "state": "Kerala",
+      "lat": 10.1076,
+      "lon": 76.3516,
+      "elevation_m": 8.0,
+      "slope_deg": 1.0,
+      "drainage_capacity_mmh": 24.0,
+      "historical_floods": 12,
+      "impervious_ratio": 0.78,
+      "river_distance_km": 0.15,
+      "flood_history": "Aug 2018 century flood (all 35 dams opened, airport submerged), 2019"
+    },
+    {
+      "name": "Wayanad (Chooralmala / Meppadi)",
+      "state": "Kerala",
+      "lat": 11.53,
+      "lon": 76.13,
+      "elevation_m": 780.0,
+      "slope_deg": 11.2,
+      "drainage_capacity_mmh": 30.0,
+      "historical_floods": 11,
+      "impervious_ratio": 0.4,
+      "river_distance_km": 0.12,
+      "flood_history": "July 2024 catastrophic flash flood & debris flow (>570mm in 48h), 2019 Puthumala"
+    },
+    {
+      "name": "Patna (Rajendra Nagar / Ganga Basin)",
+      "state": "Bihar",
+      "lat": 25.602,
+      "lon": 85.158,
+      "elevation_m": 53.0,
+      "slope_deg": 0.8,
+      "drainage_capacity_mmh": 16.0,
+      "historical_floods": 14,
+      "impervious_ratio": 0.86,
+      "river_distance_km": 0.75,
+      "flood_history": "Sept 2019 extreme urban inundation (6-8ft water for 10 days), 2007, 2016"
+    },
+    {
+      "name": "Guwahati (Brahmaputra / Bharalu Basin)",
+      "state": "Assam",
+      "lat": 26.185,
+      "lon": 91.75,
+      "elevation_m": 54.0,
+      "slope_deg": 2.8,
+      "drainage_capacity_mmh": 20.0,
+      "historical_floods": 18,
+      "impervious_ratio": 0.78,
+      "river_distance_km": 0.25,
+      "flood_history": "Annual Brahmaputra mega-floods: 2004, 2012, 2020, 2022 (Silchar submerged), 2024"
+    },
+    {
+      "name": "Surat (Tapi Basin - Adajan)",
+      "state": "Gujarat",
+      "lat": 21.195,
+      "lon": 72.81,
+      "elevation_m": 13.0,
+      "slope_deg": 0.9,
+      "drainage_capacity_mmh": 22.0,
+      "historical_floods": 8,
+      "impervious_ratio": 0.85,
+      "river_distance_km": 0.25,
+      "flood_history": "Aug 2006 historic Ukai dam discharge flood (80% city submerged), 2013"
+    },
+    {
+      "name": "Vijayawada (Budameru & Krishna Basin)",
+      "state": "Andhra Pradesh",
+      "lat": 16.538,
+      "lon": 80.638,
+      "elevation_m": 19.0,
+      "slope_deg": 1.1,
+      "drainage_capacity_mmh": 20.0,
+      "historical_floods": 10,
+      "impervious_ratio": 0.82,
+      "river_distance_km": 0.3,
+      "flood_history": "Sept 2024 Budameru flash flood + 11.8 lakh cusecs Krishna flood, 400k displaced"
+    },
+    {
+      "name": "Delhi (Yamuna Floodplain - Kashmere Gate)",
+      "state": "Delhi",
+      "lat": 28.667,
+      "lon": 77.228,
+      "elevation_m": 212.0,
+      "slope_deg": 1.0,
+      "drainage_capacity_mmh": 24.0,
+      "historical_floods": 10,
+      "impervious_ratio": 0.88,
+      "river_distance_km": 0.2,
+      "flood_history": "July 2023 Yamuna all-time record 208.66m (Red Fort & ITO flooded), 2010, 2013"
+    },
+    {
+      "name": "Hyderabad (Musi Basin - Falaknuma)",
+      "state": "Telangana",
+      "lat": 17.3616,
+      "lon": 78.4747,
+      "elevation_m": 505.0,
+      "slope_deg": 1.8,
+      "drainage_capacity_mmh": 21.0,
+      "historical_floods": 10,
+      "impervious_ratio": 0.85,
+      "river_distance_km": 0.25,
+      "flood_history": "Oct 2020 cloudburst (320mm in 24h, Musi river overflow, thousands rescued)"
+    },
+    {
+      "name": "Bengaluru (Bellandur Lake Basin)",
+      "state": "Karnataka",
+      "lat": 12.926,
+      "lon": 77.6762,
+      "elevation_m": 885.0,
+      "slope_deg": 1.5,
+      "drainage_capacity_mmh": 25.0,
+      "historical_floods": 8,
+      "impervious_ratio": 0.82,
+      "river_distance_km": 0.35,
+      "flood_history": "Sept 2022 massive urban inundation (Outer Ring Road & IT corridor on boats)"
+    },
+    {
+      "name": "Kolkata (Hooghly Basin - Kalighat)",
+      "state": "West Bengal",
+      "lat": 22.52,
+      "lon": 88.345,
+      "elevation_m": 9.0,
+      "slope_deg": 0.8,
+      "drainage_capacity_mmh": 19.0,
+      "historical_floods": 14,
+      "impervious_ratio": 0.9,
+      "river_distance_km": 0.4,
+      "flood_history": "May 2020 Cyclone Amphan storm surge, May 2024 Cyclone Remal, severe tidal floods"
+    },
+    {
+      "name": "Cuttack & Bhubaneswar (Mahanadi Basin)",
+      "state": "Odisha",
+      "lat": 20.4625,
+      "lon": 85.883,
+      "elevation_m": 24.0,
+      "slope_deg": 1.0,
+      "drainage_capacity_mmh": 20.0,
+      "historical_floods": 12,
+      "impervious_ratio": 0.76,
+      "river_distance_km": 0.3,
+      "flood_history": "2008 Mahanadi floods, May 2019 Cyclone Fani deluge, Aug 2020 floods"
+    },
+    {
+      "name": "Gorakhpur (Rapti & Rohini Basin)",
+      "state": "Uttar Pradesh",
+      "lat": 26.7606,
+      "lon": 83.3732,
+      "elevation_m": 84.0,
+      "slope_deg": 0.9,
+      "drainage_capacity_mmh": 17.0,
+      "historical_floods": 15,
+      "impervious_ratio": 0.7,
+      "river_distance_km": 0.45,
+      "flood_history": "2007, 2017, 2021 Rapti river embankment breaches, extensive terai inundation"
+    },
+    {
+      "name": "Barmer (Luni River Basin - Kawas)",
+      "state": "Rajasthan",
+      "lat": 25.7521,
+      "lon": 71.3967,
+      "elevation_m": 178.0,
+      "slope_deg": 2.2,
+      "drainage_capacity_mmh": 28.0,
+      "historical_floods": 5,
+      "impervious_ratio": 0.45,
+      "river_distance_km": 1.2,
+      "flood_history": "Aug 2006 historic Thar desert flash flood (>500mm, Kawas submerged), July 2017"
+    },
+    {
+      "name": "Agartala (Howrah Basin)",
+      "state": "Tripura",
+      "lat": 23.8315,
+      "lon": 91.2868,
+      "elevation_m": 15.0,
+      "slope_deg": 1.2,
+      "drainage_capacity_mmh": 22.0,
+      "historical_floods": 9,
+      "impervious_ratio": 0.72,
+      "river_distance_km": 0.22,
+      "flood_history": "Aug 2024 Howrah river historic flash flood, submerged capital city & NH8"
+    },
+    {
+      "name": "Pune (Mutha Basin - Deccan / Sinhagad Rd)",
+      "state": "Maharashtra",
+      "lat": 18.5167,
+      "lon": 73.8412,
+      "elevation_m": 559.0,
+      "slope_deg": 1.8,
+      "drainage_capacity_mmh": 20.0,
+      "historical_floods": 9,
+      "impervious_ratio": 0.85,
+      "river_distance_km": 0.2,
+      "flood_history": "Sept 2019 Ambil Odha flash flood, July 2024 Khadakwasla release flood"
+    },
+    {
+      "name": "Ahmedabad (Sabarmati Basin)",
+      "state": "Gujarat",
+      "lat": 23.0225,
+      "lon": 72.5714,
+      "elevation_m": 53.0,
+      "slope_deg": 1.1,
+      "drainage_capacity_mmh": 23.0,
+      "historical_floods": 7,
+      "impervious_ratio": 0.84,
+      "river_distance_km": 0.25,
+      "flood_history": "2006, July 2017 Dharoi dam discharge flood, riverfront overtopping"
+    }
+  ],
+  "facilities": [
+    {
+      "name": "NDRF 5th Battalion Headquarters",
+      "type": "RESCUE_BASE",
+      "lat": 18.75,
+      "lon": 73.85,
+      "capacity": 0
+    },
+    {
+      "name": "NDRF 8th Battalion Ghaziabad (NCR/Delhi)",
+      "type": "RESCUE_BASE",
+      "lat": 28.67,
+      "lon": 77.43,
+      "capacity": 0
+    },
+    {
+      "name": "NDRF 4th Battalion Arakkonam (Chennai)",
+      "type": "RESCUE_BASE",
+      "lat": 13.08,
+      "lon": 79.67,
+      "capacity": 0
+    },
+    {
+      "name": "NDRF 1st Battalion Guwahati (Assam/NE)",
+      "type": "RESCUE_BASE",
+      "lat": 26.15,
+      "lon": 91.7,
+      "capacity": 0
+    },
+    {
+      "name": "NDRF 9th Battalion Bihta (Patna/Bihar)",
+      "type": "RESCUE_BASE",
+      "lat": 25.56,
+      "lon": 84.87,
+      "capacity": 0
+    },
+    {
+      "name": "NDRF 10th Battalion Vijayawada (AP)",
+      "type": "RESCUE_BASE",
+      "lat": 16.51,
+      "lon": 80.62,
+      "capacity": 0
+    },
+    {
+      "name": "NDRF 3rd Battalion Mundali (Cuttack/Odisha)",
+      "type": "RESCUE_BASE",
+      "lat": 20.44,
+      "lon": 85.8,
+      "capacity": 0
+    },
+    {
+      "name": "SDRF Disaster Response Centre Srinagar",
+      "type": "RESCUE_BASE",
+      "lat": 34.08,
+      "lon": 74.8,
+      "capacity": 0
+    },
+    {
+      "name": "SDRF Central Fire & Marine Base Kochi",
+      "type": "RESCUE_BASE",
+      "lat": 9.97,
+      "lon": 76.28,
+      "capacity": 0
+    },
+    {
+      "name": "Mumbai Fire Brigade Headquarters Byculla",
+      "type": "RESCUE_BASE",
+      "lat": 18.975,
+      "lon": 72.833,
+      "capacity": 0
+    },
+    {
+      "name": "AIIMS New Delhi Emergency Centre",
+      "type": "HOSPITAL",
+      "lat": 28.5672,
+      "lon": 77.21,
+      "capacity": 2500
+    },
+    {
+      "name": "KEM Hospital & Seth GS Medical College Mumbai",
+      "type": "HOSPITAL",
+      "lat": 19.002,
+      "lon": 72.842,
+      "capacity": 1800
+    },
+    {
+      "name": "Rajiv Gandhi Government General Hospital Chennai",
+      "type": "HOSPITAL",
+      "lat": 13.081,
+      "lon": 80.278,
+      "capacity": 2700
+    },
+    {
+      "name": "Sher-i-Kashmir Institute of Medical Sciences Srinagar",
+      "type": "HOSPITAL",
+      "lat": 34.135,
+      "lon": 74.802,
+      "capacity": 1200
+    },
+    {
+      "name": "AIIMS Patna Apex Trauma Centre",
+      "type": "HOSPITAL",
+      "lat": 25.56,
+      "lon": 85.044,
+      "capacity": 1000
+    },
+    {
+      "name": "Gauhati Medical College Hospital Assam",
+      "type": "HOSPITAL",
+      "lat": 26.158,
+      "lon": 91.772,
+      "capacity": 2200
+    },
+    {
+      "name": "Government Medical College Ernakulam (Kochi)",
+      "type": "HOSPITAL",
+      "lat": 10.055,
+      "lon": 76.355,
+      "capacity": 900
+    },
+    {
+      "name": "New Government General Hospital Vijayawada",
+      "type": "HOSPITAL",
+      "lat": 16.512,
+      "lon": 80.64,
+      "capacity": 1100
+    },
+    {
+      "name": "SCB Medical College & Hospital Cuttack",
+      "type": "HOSPITAL",
+      "lat": 20.478,
+      "lon": 85.89,
+      "capacity": 2100
+    },
+    {
+      "name": "Nizam's Institute of Medical Sciences Hyderabad",
+      "type": "HOSPITAL",
+      "lat": 17.422,
+      "lon": 78.453,
+      "capacity": 1500
+    },
+    {
+      "name": "Sassoon General Hospital & BJMC Pune",
+      "type": "HOSPITAL",
+      "lat": 18.5255,
+      "lon": 73.871,
+      "capacity": 1200
+    },
+    {
+      "name": "BRD Medical College Gorakhpur",
+      "type": "HOSPITAL",
+      "lat": 26.788,
+      "lon": 83.39,
+      "capacity": 1100
+    },
+    {
+      "name": "Jawaharlal Nehru Stadium Relief Centre Delhi",
+      "type": "SHELTER",
+      "lat": 28.583,
+      "lon": 77.234,
+      "capacity": 5000
+    },
+    {
+      "name": "BKC Exhibition & Relief Centre Mumbai",
+      "type": "SHELTER",
+      "lat": 19.065,
+      "lon": 72.868,
+      "capacity": 4000
+    },
+    {
+      "name": "Jawaharlal Nehru Indoor Stadium Shelter Chennai",
+      "type": "SHELTER",
+      "lat": 13.084,
+      "lon": 80.274,
+      "capacity": 3500
+    },
+    {
+      "name": "Kashmir University Relief Shelter Srinagar",
+      "type": "SHELTER",
+      "lat": 34.128,
+      "lon": 74.838,
+      "capacity": 2500
+    },
+    {
+      "name": "Patliputra Sports Complex Shelter Patna",
+      "type": "SHELTER",
+      "lat": 25.602,
+      "lon": 85.155,
+      "capacity": 3000
+    },
+    {
+      "name": "Sarusajai Indoor Stadium Shelter Guwahati",
+      "type": "SHELTER",
+      "lat": 26.115,
+      "lon": 91.745,
+      "capacity": 3500
+    },
+    {
+      "name": "CIAL Convention & Evacuation Centre Kochi",
+      "type": "SHELTER",
+      "lat": 10.155,
+      "lon": 76.39,
+      "capacity": 3000
+    },
+    {
+      "name": "Indira Gandhi Municipal Stadium Shelter Vijayawada",
+      "type": "SHELTER",
+      "lat": 16.505,
+      "lon": 80.65,
+      "capacity": 4000
+    },
+    {
+      "name": "Barabati Stadium Relief Shelter Cuttack",
+      "type": "SHELTER",
+      "lat": 20.481,
+      "lon": 85.868,
+      "capacity": 4000
+    },
+    {
+      "name": "Balewadi Sports Complex Relief Shelter Pune",
+      "type": "SHELTER",
+      "lat": 18.574,
+      "lon": 73.771,
+      "capacity": 2500
+    },
+    {
+      "name": "Gachibowli Indoor Stadium Shelter Hyderabad",
+      "type": "SHELTER",
+      "lat": 17.445,
+      "lon": 78.348,
+      "capacity": 3000
+    }
+  ]
+}

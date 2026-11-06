@@ -1,0 +1,56 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: floodguard
+  # Default profile: in-memory H2 so the project runs with zero setup.
+  # Use `--spring.profiles.active=postgres` for PostgreSQL (see docker-compose.yml).
+  datasource:
+    url: jdbc:h2:mem:floodguard;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+floodguard:
+  jwt:
+    # MUST be overridden in any real deployment (>= 32 bytes).
+    secret: ${FLOODGUARD_JWT_SECRET:dev-only-secret-change-me-before-deploying-0123456789}
+    expiry-minutes: 480
+  ml:
+    url: ${ML_SERVICE_URL:http://localhost:8000}
+  weather:
+    base-url: https://api.open-meteo.com/v1/forecast
+    enabled: true
+    refresh-minutes: 30
+  uploads-dir: ${FLOODGUARD_UPLOADS_DIR:./uploads}
+  seed:
+    # Password for the seeded `admin` and `authority` accounts. Override outside local dev.
+    admin-password: ${FLOODGUARD_ADMIN_PASSWORD:Admin@123}
+  cors:
+    allowed-origins: ${FLOODGUARD_CORS:http://localhost:5173}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: postgres
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/floodguard}
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USER:floodguard}
+    password: ${DB_PASSWORD:floodguard}

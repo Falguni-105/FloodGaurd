@@ -1,0 +1,2 @@
+package com.floodguard.domain;
+public enum IncidentType { WATERLOGGING, BLOCKED_ROAD, DRAINAGE_OVERFLOW, PEOPLE_TRAPPED, MEDICAL_EMERGENCY, OTHER }
