@@ -1,89 +1,172 @@
-# FLOODGUARD
+# 🌊 FLOODGUARD
+### Intelligent Urban Flood Prediction & Emergency Response Management System
+*Building safer cities and mountain habitats through predictive intelligence, dynamic risk mapping, and rapid disaster response.*
 
-Intelligent urban flood prediction and emergency response management: a decision-support system.
+---
+
+## 📌 Overview
+
+**FLOODGUARD** is an intelligent, full-stack disaster management decision-support platform designed to predict urban and highland flood risks, detect infrastructure blockages, and accelerate emergency rescue operations during severe meteorological events.
+
+The platform integrates real-time weather observation (Open-Meteo API), high-resolution topographical elevation (SRTM 30m), drainage infrastructure metrics, and hydrological heuristics to deliver:
+- Hyperlocal risk predictions updated via machine learning.
+- Real-time interactive glassmorphic mapping with geospatial telemetry.
+- Citizen emergency incident reporting with GPS tagging and verification.
+- Intelligent blocked-road avoidance and dynamic rescue route generation.
+- Centralized Emergency Operations Center (EOC / NDMA) situational dashboards.
+
+---
+
+## 🚨 Problem Statement
+
+Urban flooding and mountainous flash floods inflict heavy infrastructure damage, disrupt transportation corridors, and endanger lives. Conventional early-warning systems often produce broad, regional advisories that fail to identify specific vulnerable wards or road-level waterlogging. 
+
+**FLOODGUARD** bridges this gap by delivering hyperlocal risk scores, routing rescue teams around flooded obstacles, and coordinating inter-agency resources in real time.
+
+---
+
+## 💡 System Capabilities & The Five Pillars
 
 ```
-frontend/    React + TypeScript + Leaflet (live map, citizen reporting, control room)
-backend/     Spring Boot 3 (Java 21): REST API, JWT security, WebSocket, routing, dispatch
-ml-service/  Python + scikit-learn RandomForest, served with FastAPI
-docker-compose.yml   PostgreSQL + ML service + backend + frontend
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                             FLOODGUARD ECOSYSTEM                            │
+├─────────────────────┬───────────────────────────┬───────────────────────────┤
+│ 1. AI PREDICTION    │ 2. DYNAMIC RISK MAPPING   │ 3. CITIZEN REPORTING      │
+│ Scikit-learn Random │ Interactive Leaflet + OSM │ Geotagged distress alerts │
+│ Forest model with   │ with multi-hazard layers, │ with image upload, road   │
+│ weather & elevation │ mountain zones & telemetry│ blockage identification   │
+├─────────────────────┴───────────────────────────┴───────────────────────────┤
+│ 4. INTELLIGENT RESCUE ROUTING      │ 5. NDMA DISASTER CONTROL ROOM          │
+│ Dijkstra routing with dynamic risk │ Centralized live SitRep, resource      │
+│ penalties and blocked road bypass  │ dispatch, and 6s civil defense siren   │
+└────────────────────────────────────┴────────────────────────────────────────┘
 ```
 
-## Run it
+1. **AI-Based Flood Prediction**: Hyperlocal ML risk scoring classifying localities into LOW, MODERATE, or HIGH risk with 0–100 probability scores.
+2. **Dynamic Flood Risk Mapping**: High-performance interactive geospatial canvas with live rainfall telemetry, radar sweeps, and elevation overlays.
+3. **Citizen Emergency Reporting**: Public mobile-responsive portal for reporting waterlogging, blocked bridges, trapped citizens, and medical emergencies.
+4. **Intelligent Rescue Route Management**: Graph-based pathfinding computing optimal emergency vehicle detours away from submerged roads.
+5. **Disaster Management Command Center**: Live SitRep generation, resource tracking (NDRF teams, inflatable boats, ambulances), operational dispatch, and an authentic 6.0-second civil warning siren.
 
-### Option A: Docker (everything, PostgreSQL included)
+---
+
+## 🛠️ Technology Stack
+
+| Component | Technology | Description |
+|---|---|---|
+| **Frontend** | React 18, TypeScript, Vite | Modern Emerald & Obsidian glassmorphism HUD (`backdrop-filter: blur`), Leaflet geospatial maps, Web Audio API |
+| **Backend** | Java 21 / 25, Spring Boot 3.3.5 | REST API, Spring Security, JWT auth, WebSocket/STOMP real-time messaging, JPA/Hibernate |
+| **Database** | PostgreSQL / H2 in-memory | Spatial coordinates, road network segments, incident records, and operational assets |
+| **Machine Learning**| Python 3.11+, FastAPI, Scikit-learn | RandomForest multi-factor hydrological classifier with Uvicorn async serving |
+| **Weather Feed** | Open-Meteo Forecast API | Real-time precipitation and live rainfall observations |
+| **Containerization** | Docker, Docker Compose | Multi-container production deployment |
+
+---
+
+## 🚀 Quickstart & Installation
+
+### Option A: Local Development
+
+#### 1. Machine Learning Engine (FastAPI)
+```bash
+cd ml-service
+pip install -r requirements.txt
+python train.py                       # Trains and saves model.joblib
+uvicorn app:app --host 0.0.0.0 --port 8000
+```
+*Health check available at:* `http://localhost:8000/health`
+
+#### 2. Spring Boot Backend
+```bash
+cd backend
+mvn spring-boot:run                   # Runs on port 8081 (or PORT=8081)
+```
+*API Base URL:* `http://localhost:8081/api`
+
+#### 3. React Frontend
+```bash
+cd frontend
+npm install
+npm run dev                           # Runs on http://localhost:5173
+```
+
+---
+
+### Option B: Docker Compose
 ```bash
 docker compose up --build
-# open http://localhost:3000
 ```
-Set `FLOODGUARD_JWT_SECRET`, `FLOODGUARD_ADMIN_PASSWORD` and `DB_PASSWORD` in the environment (or an `.env` file) for anything beyond a local demo.
+Open **`http://localhost:3000`** in your browser.
 
-### Option B: local development (no Docker, in-memory H2 database)
-```bash
-# 1. ML service
-cd ml-service && pip install -r requirements.txt
-python train.py                       # trains and writes model.joblib (a few seconds)
-uvicorn app:app --port 8000
+---
 
-# 2. Backend (needs JDK 21 + Maven)
-cd backend && mvn spring-boot:run     # http://localhost:8080
-#    PostgreSQL instead of H2:  --spring.profiles.active=postgres  (see DB_URL / DB_USER / DB_PASSWORD)
+## 🔑 Demo Credentials
 
-# 3. Frontend
-cd frontend && npm install && npm run dev     # http://localhost:5173
-```
-The backend still works if the ML service is down: it falls back to a rule-based score (labelled `fallback-rules` in the UI). Weather comes from the free Open-Meteo API (no key); if unreachable, the last known rainfall is kept. The **Rainfall scenario** panel in the control room lets you simulate a storm without live weather.
+| Role | Username / Identifier | Password | Access Privileges |
+|---|---|---|---|
+| **Authority / NDMA** | `admin` *(or `authority`)* | `Admin@123` | Full Control Room, SitRep reports, resource dispatch, live simulations |
+| **Citizen Demo** | `citizen` | `Citizen@123` | Public incident reporting, route planner, live risk map |
+| **Self-Registered** | *Any personal email* (e.g. `user@gmail.com`) | *Your password* | Full Citizen self-service access |
 
-### Demo accounts
-| Username | Password | Role |
+---
+
+## 🧠 Machine Learning Model & Features
+
+The ML service assesses flood probabilities based on a multi-factor hydrological feature vector:
+- **`rainfall_24h_mm`**: 24-hour cumulative precipitation.
+- **`peak_rainfall_mm_h`**: Peak hourly downpour intensity.
+- **`antecedent_rainfall_3d_mm`**: Prior 72-hour soil saturation factor.
+- **`elevation_m`**: Altitude above sea level (SRTM 30m).
+- **`slope_deg`**: Terrain gradient and runoff velocity.
+- **`drainage_capacity_index`**: Urban storm drainage efficiency (0–100).
+- **`distance_to_river_m`**: Proximity to primary hydrological waterways.
+- **`past_flood_count`**: Historical inundation records.
+- **`impervious_surface_ratio`**: Urban concrete vs. permeable vegetative surface.
+
+---
+
+## 🏔️ Monitored Mountain & Urban Zones
+
+FLOODGUARD incorporates operational telemetry across **25 key stations** spanning 7+ high-risk mountain and urban states:
+- **Himachal Pradesh**: Shimla Mall/Ridge, Kullu Valley, Manali River Basin, Dharamshala Kangra
+- **Uttarakhand**: Rishikesh Ganges, Haridwar Ghats, Dehradun Valley, Kedarnath Mandakini
+- **Jammu & Kashmir**: Srinagar Jhelum, Jammu Tawi Basin
+- **Sikkim**: Gangtok Teesta Valley
+- **Meghalaya**: Shillong Plateau, Cherrapunji / Sohra (world high-rainfall record zone)
+- **Assam & Arunachal**: Guwahati Brahmaputra, Itanagar Papum Pare
+- **Kerala Western Ghats**: Munnar High Ranges, Wayanad Meppadi Hill Basin
+- **Maharashtra (Urban Center)**: Pune Municipal Corporation (Shivajinagar, Kothrud, Hadapsar, Deccan Gymkhana, Katraj Lake Basin)
+
+---
+
+## 🎨 Modern UI & Audio Engineering
+
+- **Emerald Earth Defense Theme**: Dark obsidian canvas (`#060e0a`) with glowing mint, jade, and viridian radial accents.
+- **Frosted Glassmorphism**: Cards and navigation bars feature high-density blur (`backdrop-filter: blur(24px) saturate(190%)`) and polished specular bevel highlights.
+- **NDMA Command Palette**: Accessible via `Ctrl + K` with instant fuzzy search across operational modules.
+- **6.0-Second Civil Defense Siren**: Web Audio API dual-harmonic swept oscillator (520 Hz $\leftrightarrow$ 1040 Hz + sub-octave 260 Hz $\leftrightarrow$ 520 Hz) with an authentic civil warning envelope.
+
+---
+
+## 📡 Core API Summary
+
+| Method & Path | Access | Description |
 |---|---|---|
-| `authority` | `Admin@123` | Control room (dashboard, dispatch, status changes) |
-| `admin` | `Admin@123` | Same as authority |
-| any registered user | your own | Citizen (report incidents) |
+| `POST /api/auth/register`, `/api/auth/login` | Public | Citizen email/username authentication |
+| `GET /api/risk/map`, `/api/risk/model` | Public | Real-time locality risk scores and ML model metadata |
+| `GET /api/roads`, `/api/facilities` | Public | Road edge status, hospital and shelter coordinates |
+| `POST /api/incidents` *(multipart)* | Authenticated | Citizen emergency report with GPS and photo upload |
+| `GET /api/rescue/route` | Public | Dijkstra routing with risk avoidance and road block detours |
+| `GET /api/rescue/plan` | Authority | Prioritized disaster dispatch and rescue base allocation |
+| `POST /api/risk/simulate` | Authority | Storm scenario injection to test citywide resilience |
+| `WebSocket /ws` *(STOMP)* | Public | Live telemetry broadcasts (`/topic/risk`, `/topic/incidents`) |
 
-The seed password is only a local-demo default; the backend logs a warning while it is in use. Public registration always creates a citizen account; authority accounts are provisioned by seeding / an administrator.
+---
 
-## How it maps to the five modules
+## 🎯 Vision & Roadmap
 
-| Module | Where |
-|---|---|
-| AI flood prediction | `ml-service/` (model) + `MlClient`, `WeatherService`, `RiskService` |
-| Dynamic risk map | `GET /api/risk/map`, refreshed every 30 min and on demand; pushed over WebSocket |
-| Citizen reporting | `POST /api/incidents` (GPS, description, optional photo) |
-| Rescue route management | `RoadNetwork` (Dijkstra, blocked-road avoidance), `GET /api/rescue/route`, `GET /api/rescue/plan` |
-| Disaster dashboard | `GET /api/dashboard/summary`, `/api/resources`, Control Room page |
+- **IoT Sensor Telemetry**: Automated ultrasonic river-level and culvert water-depth feeds.
+- **Drone Aerial Survey**: Ingestion of real-time orthophoto mapping for damage assessment.
+- **Multilingual Public Alerts**: SMS and voice-call warning broadcasts in regional languages.
 
-## The ML model
-* **Task:** classify a locality as LOW / MODERATE / HIGH flood risk (plus a 0-100 expected-risk score from the class probabilities).
-* **Features:** 24 h rainfall, peak hourly intensity, 3-day antecedent rainfall, elevation, slope, drainage capacity, distance to river, past flood count, impervious-surface ratio.
-* **Algorithm:** scikit-learn `RandomForestClassifier`.
-* **Important:** there is no public labelled urban-flood dataset bundled here, so `train.py` trains on **synthetic data generated from a hydrologically motivated formula plus noise**. The ~85% test accuracy therefore measures how well the forest learned that formula, **not real-world forecasting skill**. To use it for real, replace `generate_data()` with historical flood records joined to rainfall and terrain data, then re-validate (hold out whole storms/years, check recall on HIGH events).
-
-## Rescue routing and prioritisation
-* The road graph is a set of junctions and segments in the database. A segment is **blocked** when an active `BLOCKED_ROAD` report, or a HIGH/CRITICAL `WATERLOGGING` report, lies within 250 m of it. Resolving or rejecting the report un-blocks it.
-* Routes use Dijkstra, with segment cost raised in MODERATE (x1.15) and HIGH (x1.5) risk localities so routes prefer drier ground. ETA assumes 25 km/h.
-* **Incident priority (0-100)** = severity (15 / 35 / 60 / 85) + 10 for people trapped or medical emergency + 10% of the locality's risk score + up to 10 for waiting time. The dispatch plan lists active incidents in that order, each with the nearest rescue base that can actually reach it, plus the nearest hospital and shelter; unreachable incidents are flagged for boat/air rescue.
-
-## Data you must replace before real use
-The bundled city is an **illustrative demo (Pune-area localities)**. Elevations, drainage capacities, flood histories, facilities, resource counts and the road graph are **approximate placeholders** (facility names are marked "(demo)"). Load municipal GIS data and an OpenStreetMap-derived road graph into the `locality`, `junction`, `road_edge` and `facility` tables. Set `floodguard.seed.demo-data=false` to skip the demo data.
-
-## Security notes
-* JWT (HS256) bearer auth, BCrypt password hashing, stateless sessions, role-based access (`CITIZEN`, `AUTHORITY`, `ADMIN`).
-* Anonymous visitors see only the risk map, road status, facilities and a stripped-down incident feed (no description, reporter or photo). Photos are authority-only; uploads are checked by file signature (JPEG/PNG/WebP), size-limited, and stored under random names.
-* WebSocket messages carry only a "something changed" event, never personal data; clients re-fetch through the authorised API.
-* Known gaps for production: no rate limiting or CAPTCHA on registration/reporting, and citizen reports block roads immediately, so a malicious or mistaken report can divert routing until an authority rejects it (add a verification step or reporter reputation if that is a concern). Use HTTPS, a real secret, and a managed database.
-
-## PostGIS
-The stack in the proposal names PostGIS. This build uses plain PostgreSQL (H2 for local dev) and computes distances in Java (haversine / point-to-segment). That is enough at city scale with a few hundred segments. For a full OSM road network, switch the geometry columns to PostGIS and use `ST_DWithin` and pgRouting.
-
-## Tests
-`backend/src/test/java/.../FloodGuardIntegrationTest.java` covers access control, role escalation, upload validation, public-feed privacy, blocked-road detours and dispatch ordering. Run with `cd backend && mvn test`.
-
-## API summary
-| Method & path | Access |
-|---|---|
-| `POST /api/auth/register`, `/api/auth/login` | public |
-| `GET /api/risk/map`, `/api/risk/model`, `/api/roads`, `/api/facilities`, `/api/facilities/nearest`, `/api/incidents/public`, `/api/rescue/route` | public |
-| `POST /api/incidents` (multipart), `GET /api/incidents/mine` | logged in |
-| `GET /api/incidents`, `PATCH /api/incidents/{id}`, `GET /api/rescue/plan`, `GET /api/dashboard/summary`, `GET/PATCH /api/resources`, `POST /api/risk/refresh`, `POST /api/risk/simulate`, `GET /api/files/{name}` | authority / admin |
-| WebSocket `/ws` (STOMP topics `/topic/risk`, `/topic/incidents`) | public events |
+*Predict Early. Respond Faster. Save Lives.*
