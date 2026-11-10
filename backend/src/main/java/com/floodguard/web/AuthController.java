@@ -26,11 +26,13 @@ public class AuthController {
     /** Public self-registration always creates a CITIZEN; authority accounts are provisioned by admins. */
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest req) {
-        if (users.existsByUsername(req.username())) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Username already taken");
+        String cleanIdentifier = req.username().strip();
+        if (users.existsByUsernameIgnoreCase(cleanIdentifier) || users.existsByUsername(cleanIdentifier)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Username or email is already registered");
         }
         AppUser u = new AppUser();
-        u.setUsername(req.username());
+        // Normalize email/username to lowercase for consistent storage
+        u.setUsername(cleanIdentifier.toLowerCase());
         u.setPasswordHash(encoder.encode(req.password()));
         u.setFullName(req.fullName().strip());
         u.setRole(Role.CITIZEN);
@@ -40,9 +42,12 @@ public class AuthController {
 
     @PostMapping("/login")
     public AuthResponse login(@Valid @RequestBody LoginRequest req) {
-        AppUser u = users.findByUsername(req.username()).orElse(null);
+        String cleanIdentifier = req.username().strip();
+        AppUser u = users.findByUsernameIgnoreCase(cleanIdentifier)
+                .or(() -> users.findByUsername(cleanIdentifier))
+                .orElse(null);
         if (u == null || !encoder.matches(req.password(), u.getPasswordHash())) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid username or password");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid username/email or password");
         }
         return response(u);
     }

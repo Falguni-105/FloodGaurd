@@ -11,11 +11,11 @@ import lombok.Setter;
 public class AppUser {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true, length = 30)
+    @Column(nullable = false, unique = true, length = 120)
     private String username;
     @Column(nullable = false)
     private String passwordHash;
-    @Column(nullable = false, length = 80)
+    @Column(nullable = false, length = 120)
     private String fullName;
     @Enumerated(EnumType.STRING) @Column(nullable = false)
     private Role role;

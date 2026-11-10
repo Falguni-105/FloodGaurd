@@ -11,9 +11,9 @@ public final class Dtos {
 
     // ---- auth ----
     public record RegisterRequest(
-            @NotBlank @Size(min = 3, max = 30) @Pattern(regexp = "^[A-Za-z0-9_]+$", message = "letters, digits, underscore only") String username,
-            @NotBlank @Size(min = 8, max = 100) String password,
-            @NotBlank @Size(max = 80) String fullName) {}
+            @NotBlank @Size(min = 3, max = 120) @Pattern(regexp = "^[A-Za-z0-9_@.+ -]+$", message = "Must be a valid email or username (letters, digits, @, ., -, _)") String username,
+            @NotBlank @Size(min = 6, max = 100, message = "Password must be at least 6 characters") String password,
+            @NotBlank @Size(max = 120) String fullName) {}
     public record LoginRequest(@NotBlank String username, @NotBlank String password) {}
     public record AuthResponse(String token, String username, String fullName, String role) {}
 

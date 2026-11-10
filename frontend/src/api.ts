@@ -22,7 +22,16 @@ export async function api<T>(path: string, opts: { method?: string; body?: unkno
   const res = await fetch(path, { method: opts.method ?? 'GET', headers, body });
   if (!res.ok) {
     let msg = res.statusText;
-    try { const j = await res.json(); if (j.error) msg = j.error; } catch { /* no json body */ }
+    try {
+      const j = await res.json();
+      if (j.errors && Array.isArray(j.errors) && j.errors.length > 0) {
+        msg = j.errors.map((e: { defaultMessage?: string; field?: string }) => e.defaultMessage || e.field).join('. ');
+      } else if (j.message) {
+        msg = j.message;
+      } else if (j.error) {
+        msg = j.error;
+      }
+    } catch { /* no json body */ }
     throw new ApiError(res.status, msg || `HTTP ${res.status}`);
   }
   if (res.status === 204) return undefined as T;
