@@ -4,6 +4,14 @@ import type { User } from './types';
 
 const KEY = 'floodguard.user';
 
+const API_BASE_URL = (
+  import.meta.env.VITE_API_BASE_URL || ''
+).replace(/\/$/, '');
+
+const WS_URL =
+  import.meta.env.VITE_WS_URL ||
+  `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`;
+
 export function loadUser(): User | null {
   try { const s = sessionStorage.getItem(KEY); return s ? JSON.parse(s) : null; } catch { return null; }
 }
@@ -19,7 +27,11 @@ export async function api<T>(path: string, opts: { method?: string; body?: unkno
   let body: BodyInit | undefined;
   if (opts.form) body = opts.form;
   else if (opts.body !== undefined) { headers['Content-Type'] = 'application/json'; body = JSON.stringify(opts.body); }
-  const res = await fetch(path, { method: opts.method ?? 'GET', headers, body });
+ const res = await fetch(`${API_BASE_URL}${path}`, {
+  method: opts.method ?? 'GET',
+  headers,
+  body,
+ });
   if (!res.ok) {
     let msg = res.statusText;
     try {
@@ -47,7 +59,7 @@ export function useLive(reload: () => void) {
     run();
     const proto = location.protocol === 'https:' ? 'wss' : 'ws';
     const client = new Client({
-      brokerURL: `${proto}://${location.host}/ws`,
+      brokerURL: WS_URL,
       reconnectDelay: 5000,
       onConnect: () => {
         client.subscribe('/topic/risk', run);
